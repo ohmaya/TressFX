@@ -82,28 +82,47 @@ void TressFXSimulation::Simulate(EI_CommandContext& commandContext, std::vector<
         hairObjects[i]->UpdateConstantBuffer(commandContext);
     }
 
+    {
     // IntegrationAndGlobalShapeConstraints
+    EI_Marker markerIntegrationAndGlobalShapeConstraints(commandContext, "IntegrationAndGlobalShapeConstraints");
     DispatchComputeShader(commandContext, mIntegrationAndGlobalShapeConstraintsPSO.get(), DISPATCHLEVEL_VERTEX, hairObjects);
     GetDevice()->GetTimeStamp("IntegrationAndGlobalShapeContraints");
+    }
 
+    {
     // Calculate Strand Level Data
+    EI_Marker markerCalculateStrandLevelData(commandContext, "CalculateStrandLevelData");
     DispatchComputeShader(commandContext, mCalculateStrandLevelDataPSO.get(), DISPATCHLEVEL_STRAND, hairObjects);
     GetDevice()->GetTimeStamp("CalculateStrandLevelData");
+    }
 
+    {
     // VelocityShockPropagation
+    EI_Marker markerVelocityShockPropagation(commandContext, "VelocityShockPropagation");
     DispatchComputeShader(commandContext, mVelocityShockPropagationPSO.get(), DISPATCHLEVEL_VERTEX, hairObjects);
     GetDevice()->GetTimeStamp("VelocityShockPropagation");
+    }
 
+    {
+    // LocalShapeConstraints
+    EI_Marker markerLocalShapeConstraints(commandContext, "LocalShapeConstraints");
     DispatchComputeShader(commandContext, mLocalShapeConstraintsPSO.get(), DISPATCHLEVEL_STRAND, hairObjects, true);
     GetDevice()->GetTimeStamp("LocalShapeConstraints");
+    }
 
+    {
     // LengthConstriantsWindAndCollision
+    EI_Marker markerLengthConstriantsWindAndCollision(commandContext, "LengthConstriantsWindAndCollision");
     DispatchComputeShader(commandContext, mLengthConstriantsWindAndCollisionPSO.get(), DISPATCHLEVEL_VERTEX, hairObjects);
     GetDevice()->GetTimeStamp("LengthConstriantsWindAndCollision");
+    }
 
+    {
     // UpdateFollowHairVertices
+    EI_Marker markerUpdateFollowHairVertices(commandContext, "UpdateFollowHairVertices");
     DispatchComputeShader(commandContext, mUpdateFollowHairVerticesPSO.get(), DISPATCHLEVEL_VERTEX, hairObjects);
     GetDevice()->GetTimeStamp("UpdateFollowHairVertices");
+    }
 
     for (int i = 0; i < hairObjects.size(); ++i)
     {
