@@ -788,6 +788,16 @@ void EI_Device::OnCreate(HWND hWnd, uint32_t numBackBuffers, bool enableValidati
     //init the shader compiler
     CAULDRON_DX12::CreateShaderCache();
 
+    // Change font size adaptively. Thanks to Fangchen.
+    int SM_CXSCREEN_Value = GetSystemMetrics(SM_CXSCREEN);
+    if (SM_CXSCREEN_Value != 0)
+    {
+        ImGuiIO &io = ImGui::GetIO();
+        ImFontConfig font_cfg;
+        font_cfg.SizePixels = 24.0f * SM_CXSCREEN_Value / 3840.f;
+        io.Fonts->AddFontDefault(&font_cfg);
+    }
+
     // Create Swap chain
     m_swapChain.OnCreate(&m_device, numBackBuffers, hWnd, CAULDRON_DX12::DISPLAYMODE_SDR);
 
