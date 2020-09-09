@@ -53,7 +53,7 @@ void DispatchComputeShader(EI_CommandContext& ctx, EI_PSO * pso, DispatchLevel l
     ctx.BindPSO(pso);
     for (int i = 0; i < hairObjects.size(); ++i)
     {
-        int numGroups = (int)((float)hairObjects[i]->GetNumTotalHairVertices() / (float)TRESSFX_SIM_THREAD_GROUP_SIZE);
+        int numGroups = (int)((float)hairObjects[i]->GetNumGuideHairVertices() / (float)TRESSFX_SIM_THREAD_GROUP_SIZE);
         if (level == DISPATCHLEVEL_STRAND)
         {
             numGroups = (int)(((float)(hairObjects[i]->GetNumTotalHairStrands()) / (float)TRESSFX_SIM_THREAD_GROUP_SIZE));
