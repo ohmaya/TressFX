@@ -111,6 +111,7 @@ public:
 
     TressFXDynamicState& GetDynamicState() { return m_DynamicState; }
 
+    int GetNumGuideHairVertices() const { return m_numGuideVertices; }
     int GetNumTotalHairVertices() const { return m_NumTotalVertices; }
     int GetNumTotalHairStrands() const { return m_NumTotalStrands; }
     int GetNumVerticesPerStrand() const { return m_NumVerticesPerStrand; }
@@ -120,6 +121,7 @@ public:
     EI_BindSet* GetRenderLayoutBindSet() const { return m_pRenderLayoutBindSet.get(); }
 
     // Get hair asset info
+    int GetNumGuideHairVertices() { return m_numGuideVertices; }
     int GetNumTotalHairVertices() { return m_NumTotalVertices; }
     int GetNumTotalHairStrands() { return m_NumTotalStrands; }
     int GetNumVerticesPerStrand() { return m_NumVerticesPerStrand; }
@@ -141,6 +143,7 @@ private:
     void SetWind(const Vector3& windDir, float windMag, int frame);
 
     // hair asset information
+    int m_numGuideVertices;
     int m_NumTotalVertices;
     int m_NumTotalStrands;
     int m_NumVerticesPerStrand;
