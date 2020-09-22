@@ -47,6 +47,7 @@ TressFXHairObject::TressFXHairObject(TressFXAsset* asset,
     const char *      name, int RenderIndex) :
     m_NumGuideVertices(asset->m_numGuideVertices),
     m_NumTotalVertices(0), 
+    m_NumGuideStrands(asset->m_numGuideStrands),
     m_NumTotalStrands(0), 
     m_NumVerticesPerStrand(0), 
     m_CPULocalShapeIterations(0), 
