@@ -113,6 +113,7 @@ public:
 
     int GetNumGuideHairVertices() const { return m_NumGuideVertices; }
     int GetNumTotalHairVertices() const { return m_NumTotalVertices; }
+    int GetNumGuideHairStrands() const { return m_NumGuideStrands; }
     int GetNumTotalHairStrands() const { return m_NumTotalStrands; }
     int GetNumVerticesPerStrand() const { return m_NumVerticesPerStrand; }
     int GetCPULocalShapeIterations() const { return  m_CPULocalShapeIterations; }
@@ -123,6 +124,7 @@ public:
     // Get hair asset info
     int GetNumGuideHairVertices() { return m_NumGuideVertices; }
     int GetNumTotalHairVertices() { return m_NumTotalVertices; }
+    int GetNumGuideHairStrands() { return m_NumGuideStrands; }
     int GetNumTotalHairStrands() { return m_NumTotalStrands; }
     int GetNumVerticesPerStrand() { return m_NumVerticesPerStrand; }
 
@@ -145,6 +147,7 @@ private:
     // hair asset information
     int m_NumGuideVertices;
     int m_NumTotalVertices;
+    int m_NumGuideStrands;
     int m_NumTotalStrands;
     int m_NumVerticesPerStrand;
     int m_CPULocalShapeIterations;
