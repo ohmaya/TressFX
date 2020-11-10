@@ -274,6 +274,8 @@ void TressFXPPLL::DrawHairStrands(EI_CommandContext& commandContext, int numHair
 
 void TressFXPPLL::Draw(EI_CommandContext& commandContext, int numHairStrands, HairStrands** hairStrands, EI_BindSet* viewBindSet, EI_BindSet* lightBindSet)
 {
+    EI_Marker markerLocalShapeConstraints(commandContext, "DrawHairPPLL");
+
     // Clear out resources
     Clear(commandContext);
 

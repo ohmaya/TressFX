@@ -296,6 +296,8 @@ void TressFXSample::RecreateSizeDependentResources()
 
 void TressFXSample::DrawHairShadows()
 {
+    EI_Marker markerLocalShapeConstraints(GetDevice()->GetCurrentCommandContext(), "DrawHairShadows");
+
     int numHairStrands = (int)m_activeScene.objects.size();
     std::vector<HairStrands*> hairStrands(numHairStrands);
     EI_BindSet* ExtraBindSets[] = { m_activeScene.shadowViewBindSet.get() };
