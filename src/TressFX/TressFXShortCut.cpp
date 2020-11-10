@@ -429,6 +429,8 @@ void TressFXShortCut::DrawHairStrands(EI_CommandContext& commandContext, int num
 
 void TressFXShortCut::Draw(EI_CommandContext& commandContext, int numHairStrands, HairStrands** hairStrands, EI_BindSet* viewBindSet, EI_BindSet* lightBindSet)
 {
+    EI_Marker markerLocalShapeConstraints(commandContext, "DrawHairShortCut");
+
     // Clear out depth texture array
     Clear(commandContext);
 
